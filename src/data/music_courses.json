@@ -8,7 +8,7 @@
       "price": 99.99,
       "instructor": "John Doe",
       "isFeatured": true,
-      "image": "/green-vision/courses/irrigation.jpg"
+      "image": "/Green-Vision/courses/irrigation.jpg"
     },
     {
       "id": 2,
@@ -18,7 +18,7 @@
       "price": 109.99,
       "instructor": "Jane Smith",
       "isFeatured": true,
-      "image": "/green-vision/courses/irrigation_sprinkler2.jpg"
+      "image": "/Green-Vision/courses/irrigation_sprinkler2.jpg"
     },
     {
       "id": 3,
@@ -28,7 +28,7 @@
       "price": 119.99,
       "instructor": "Emily Johnson",
       "isFeatured": true,
-      "image": "/green-vision/courses/landscaping.jpg"
+      "image": "/Green-Vision/courses/landscaping.jpg"
     },
     {
       "id": 4,
@@ -38,7 +38,7 @@
       "price": 129.99,
       "instructor": "Mike Brown",
       "isFeatured": false,
-      "image": "/green-vision/courses/filtration.jpg"
+      "image": "/Green-Vision/courses/filtration.jpg"
     },
     {
       "id": 5,
@@ -48,7 +48,7 @@
       "price": 139.99,
       "instructor": "Chris Davis",
       "isFeatured": false,
-      "image": "/green-vision/courses/solar_sleaning.png"
+      "image": "/Green-Vision/courses/solar_sleaning.png"
     }
   ]
 }

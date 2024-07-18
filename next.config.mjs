@@ -28,7 +28,7 @@ const nextConfig = {
   },
   output: "export",
   reactStrictMode: true,
-  basepath:'/green-vision'
+  basepath:'/Green-Vision'
 };
 
 export default nextConfig;
