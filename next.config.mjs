@@ -11,7 +11,7 @@
 //     unoptimized: true,
 //   },
 //   output: "export",
-//   reactStrictMode: true,
+//   reactStrictMode: true, 
 //   distDir: 'dist',
 //   basepath:'/green-vision'
 // };
