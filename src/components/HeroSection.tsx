@@ -11,7 +11,8 @@ function HeroSection() {
       />
       <div className="p-4 relative z-10 w-full text-center">
         <h1 className="mt-20 md:mt-0 text-4xl md:text-7xl font-bold text-neutral-50">
-          Go Green{" "}
+          Go Green {" "}
+          <span className="mt-20 md:mt-0 text-2xl md:text-4xl font-bold text-neutral-50">with</span>
           <span className="text-green-500">Green Vision</span>
         </h1>
 
