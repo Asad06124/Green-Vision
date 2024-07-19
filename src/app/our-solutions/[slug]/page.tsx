@@ -1,4 +1,6 @@
 // app/our-solutions/[slug]/page.tsx
+"use client";
+import Image from "next/image";
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import courseData from '../../../data/solutions.json';
@@ -33,9 +35,8 @@ const SolutionPage = () => {
     <div>
       <h1>{solution.title}</h1>
       <p>{solution.description}</p>
-      <p>Price: ${solution.price}</p>
-      <p>Instructor: {solution.instructor}</p>
-      <img src={solution.image} alt={solution.title} />
+     
+      <Image src={solution.image} alt={solution.title} />
     </div>
   );
 };
