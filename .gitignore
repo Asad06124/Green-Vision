@@ -13,7 +13,7 @@
 /.next/
 /out/
 /dist/
-/src/app/our-solutions/[slug]/
+# /src/app/our-solutions/[slug]/
 # production
 /build
 
