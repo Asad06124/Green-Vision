@@ -27,14 +27,15 @@ export default async function SolutionPage({ params }: { params: { slug: string 
   }
 
   return (
+    <main className="min-h-screen bg-black/[0.96] antialiased bg-grid-white/[0.02]">
     <div className="bg-black">
       <article className="bg-black text-white pt-5 rounded-lg">
         <header className="text-center">
           <h1 className="text-3xl font-bold">{solution.title}</h1>
         </header>
-        <Image src={solution.image} alt={solution.title} width={500} height={300} className="rounded-lg my-5" />
+        <Image src={solution.image} alt={solution.title} className="rounded-lg my-5" />
         <p className="text-base">{solution.description}</p>
       </article>
-    </div>
+    </div></main>
   );
 }
