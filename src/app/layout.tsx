@@ -19,10 +19,7 @@ export default function RootLayout({
     <html lang="en" className="dark">
       <title>Green Vision</title>
       <meta name="description" content="This is a description of my page." />
-      <meta name="keywords" content="my, page, keywords" />
-      <meta name="robots" content="index, follow" />
-      <meta name="author" content="M Awais" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
       <body className={inter.className}>
         <div className="relative w-full flex items-center justify-center ">
           <Navbar/>
