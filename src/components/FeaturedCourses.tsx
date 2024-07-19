@@ -1,6 +1,6 @@
 'use client'
 import Link from "next/link"
-import courseData from "../data/music_courses.json"
+import courseData from "../data/solutions.json"
 import { BackgroundGradient } from "./ui/background-gradient"
 
 interface Course{
@@ -15,7 +15,7 @@ interface Course{
 }
 
 function FeaturedCourses() {
-    const featuredCourses = courseData.courses.filter((course:Course) => course.isFeatured)
+    const featuredCourses = courseData.solutions.filter((course:Course) => course.isFeatured)
 
 
   return (
