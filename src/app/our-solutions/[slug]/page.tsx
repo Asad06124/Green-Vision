@@ -27,7 +27,7 @@ export default async function SolutionPage({ params }: { params: { slug: string 
   }
 
   return (
-    <div className="container mx-auto pt-10">
+    <div className="bg-black">
       <article className="bg-black text-white pt-5 rounded-lg">
         <header className="text-center">
           <h1 className="text-3xl font-bold">{solution.title}</h1>
