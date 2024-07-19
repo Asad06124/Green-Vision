@@ -30,6 +30,7 @@ const SolutionPage = () => {
   if (!solution) {
     return <div>Solution not found</div>;
   }
+  
 
   return (
     <div>
