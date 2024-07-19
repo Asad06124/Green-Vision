@@ -1,8 +1,6 @@
 // app/our-solutions/[slug]/page.tsx
-"use client";
-import Image from "next/image";
-import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import Image from 'next/image';
+import { notFound } from 'next/navigation';
 import courseData from '../../../data/solutions.json';
 
 interface Solution {
@@ -15,31 +13,24 @@ interface Solution {
   image: string;
 }
 
-const SolutionPage = () => {
-  const router = useRouter();
-  const { slug } = router.query;
-  const [solution, setSolution] = useState<Solution | undefined>(undefined);
+export async function generateStaticParams() {
+  return courseData.solutions.map((solution) => ({
+    slug: solution.slug,
+  }));
+}
 
-  useEffect(() => {
-    if (slug) {
-      const foundSolution = courseData.solutions.find((sol) => sol.slug === slug);
-      setSolution(foundSolution);
-    }
-  }, [slug]);
+export default async function SolutionPage({ params }: { params: { slug: string } }) {
+  const solution = courseData.solutions.find((sol) => sol.slug === params.slug);
 
   if (!solution) {
-    return <div>Solution not found</div>;
+    notFound();
   }
-  
 
   return (
     <div>
       <h1>{solution.title}</h1>
       <p>{solution.description}</p>
-     
-      <Image src={solution.image} alt={solution.title} />
+      <Image src={solution.image} alt={solution.title} width={500} height={300} />
     </div>
   );
-};
-
-export default SolutionPage;
+}

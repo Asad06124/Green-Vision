@@ -28,6 +28,7 @@ const nextConfig = {
   },
   output: "export",
   reactStrictMode: true,
+  exportTrailingSlash: true,
   basepath:'/Green-Vision'
 };
 
