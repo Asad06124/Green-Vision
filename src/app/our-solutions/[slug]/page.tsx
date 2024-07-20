@@ -43,7 +43,7 @@ const getMetadata = (solution: Solution) => ({
 });
 
 
-export default async function SolutionPage({ params }: { params: { slug: string } }) {
+export  async function SolutionPage({ params }: { params: { slug: string } }) {
   const solution = courseData.solutions.find((sol) => sol.slug === params.slug);
 
   if (!solution) {
@@ -90,3 +90,4 @@ export default async function SolutionPage({ params }: { params: { slug: string 
       </html>
   );
 }
+export default SolutionPage;
