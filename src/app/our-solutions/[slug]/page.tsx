@@ -1,7 +1,9 @@
 import React from 'react';
 import Image from 'next/image';
+import Head from 'next/head'; // Import Head from next/head
 import { notFound } from 'next/navigation';
 import courseData from '../../../data/solutions.json';
+import type { Metadata } from "next";
 
 interface Solution {
   slug: string;
@@ -32,6 +34,15 @@ export async function generateStaticParams() {
   }));
 }
 
+
+
+
+const getMetadata = (solution: Solution) => ({
+  title: `${solution.title}`,
+  description: `${solution.description.substring(0, 160)}...`, // Ensure description is concise
+});
+
+
 export default async function SolutionPage({ params }: { params: { slug: string } }) {
   const solution = courseData.solutions.find((sol) => sol.slug === params.slug);
 
@@ -39,34 +50,43 @@ export default async function SolutionPage({ params }: { params: { slug: string 
     notFound();
   }
 
+  // Define metadata based on the solution data
+  
+  const matadata = getMetadata(solution);
   return (
-    <div className="mx-auto p-5 min-h-screen w-full bg-black/[0.96] antialiased bg-grid-white/[0.02]">
-      <article className="text-white rounded-lg">
-        <header className="text-justify">
-          <h1 className="container sm:w-5/6 lg:w-2/5 text-3xl font-bold pt-10 text-center mx-auto">
-            {solution.title}
-          </h1>
-        </header>
-        <div className="flex justify-center my-5">
-          <Image
-            src={solution.image}
-            alt={solution.title}
-            width={1024}
-            height={524}
-            className="rounded-lg sm:w-full lg:w-3/4 h-auto"
-            style={{ minHeight: '25vh', maxHeight: '70vh' }}
-          />
-        </div>
-        <div className="container sm:w-5/6 lg:w-3/5 text-center text-xl mx-auto">
-          {formatDescription(solution.description)}
-        </div>
-        {solution.descriptionLong && (
-          <div
-            className="container sm:w-5/6 lg:w-3/5 text-base mx-auto mt-5"
-            dangerouslySetInnerHTML={{ __html: solution.descriptionLong }}
-          />
-        )}
-      </article>
-    </div>
+   
+     <html>
+        <title>{matadata.title}</title>
+        <meta name="description" content={matadata.description} />
+      
+      <div className="mx-auto p-5 min-h-screen w-full bg-black/[0.96] antialiased bg-grid-white/[0.02]">
+        <article className="text-white rounded-lg">
+          <header className="text-justify">
+            <h1 className="container sm:w-5/6 lg:w-2/5 text-3xl font-bold pt-10 text-center mx-auto">
+              {solution.title}
+            </h1>
+          </header>
+          <div className="flex justify-center my-5">
+            <Image
+              src={solution.image}
+              alt={solution.title}
+              width={1024}
+              height={524}
+              className="rounded-lg sm:w-full lg:w-3/4 h-auto"
+              style={{ minHeight: '25vh', maxHeight: '70vh' }}
+            />
+          </div>
+          <div className="container sm:w-5/6 lg:w-3/5 text-center text-xl mx-auto">
+            {formatDescription(solution.description)}
+          </div>
+          {solution.descriptionLong && (
+            <div
+              className="container sm:w-5/6 lg:w-3/5 text-base mx-auto mt-5"
+              dangerouslySetInnerHTML={{ __html: solution.descriptionLong }}
+            />
+          )}
+        </article>
+      </div>
+      </html>
   );
 }
