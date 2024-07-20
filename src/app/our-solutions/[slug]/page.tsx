@@ -86,8 +86,9 @@ const getMetadata = (solution: Solution) => ({
             />
           )}
         </article>
+        <Footer />
       </div>
-      <Footer />
+     
       </html>
   );
 }
