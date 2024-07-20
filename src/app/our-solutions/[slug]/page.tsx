@@ -1,10 +1,10 @@
 import React from 'react';
 import Image from 'next/image';
-import Head from 'next/head'; // Import Head from next/head
+
 import { notFound } from 'next/navigation';
 import courseData from '../../../data/solutions.json';
-import type { Metadata } from "next";
 
+import Footer from "@/components/Footer";
 interface Solution {
   slug: string;
   title: string;
@@ -43,7 +43,7 @@ const getMetadata = (solution: Solution) => ({
 });
 
 
-export  async function SolutionPage({ params }: { params: { slug: string } }) {
+   function SolutionPage({ params }: { params: { slug: string } }) {
   const solution = courseData.solutions.find((sol) => sol.slug === params.slug);
 
   if (!solution) {
@@ -87,6 +87,7 @@ export  async function SolutionPage({ params }: { params: { slug: string } }) {
           )}
         </article>
       </div>
+      <Footer />
       </html>
   );
 }
