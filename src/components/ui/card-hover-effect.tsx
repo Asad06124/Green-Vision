@@ -11,6 +11,7 @@ export const HoverEffect = ({
     title: string;
     description: string;
     link: string;
+    bgImg:string;
   }[];
   className?: string;
 }) => {
@@ -48,10 +49,12 @@ export const HoverEffect = ({
               />
             )}
           </AnimatePresence>
-          <Card>
+          <Card bgImg={item.bgImg}>
+          
             <CardTitle>{item.title}</CardTitle>
             <CardDescription>{item.description}</CardDescription>
           </Card>
+          
         </Link>
       ))}
     </div>
@@ -61,21 +64,34 @@ export const HoverEffect = ({
 export const Card = ({
   className,
   children,
+  bgImg,
 }: {
   className?: string;
   children: React.ReactNode;
+  bgImg:string;
 }) => {
   return (
-    <div
-      className={cn(
-        "rounded-2xl h-full w-full p-4 overflow-hidden bg-black border border-transparent dark:border-white/[0.2] group-hover:border-slate-700 relative z-50",
-        className
-      )}
-    >
-      <div className="relative z-50">
-        <div className="p-4">{children}</div>
-      </div>
-    </div>
+<div
+  className={cn(
+    "relative rounded-2xl h-full w-full p-4 overflow-hidden bg-black border border-transparent dark:border-white/[0.2] group-hover:border-slate-700",
+    className
+  )}
+  style={{
+    backgroundImage: `url(${bgImg})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+  }}
+>
+  <div className="absolute inset-0">
+    <div className="absolute inset-0 bg-black bg-opacity-30 filter blur-2xl"></div>
+    <div className="absolute inset-0 bg-black bg-opacity-30" ></div>
+  </div>
+  <div className="relative z-10 p-4">
+    {children}
+  </div>
+</div>
+
+
   );
 };
 export const CardTitle = ({

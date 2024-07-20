@@ -2,6 +2,8 @@
 import React, { useRef } from "react";
 import { useMotionValueEvent, useScroll } from "framer-motion";
 import { motion } from "framer-motion";
+import Image from 'next/image';
+
 
 export const StickyScroll = ({
   content,
@@ -34,9 +36,9 @@ export const StickyScroll = ({
     "var(--neutral-900)",
   ];
   const linearGradients = [
-    "linear-gradient(to bottom right, var(--cyan-500), var(--emerald-500))",
-    "linear-gradient(to bottom right, var(--pink-500), var(--indigo-500))",
-    "linear-gradient(to bottom right, var(--orange-500), var(--yellow-500))",
+    "/courses/drip.jpg",
+    "/courses/landscp.jpg",
+    "/courses/fountain.jpg",
   ];
   return (
     <div>
@@ -93,12 +95,18 @@ export const StickyScroll = ({
           <div className="h-40" />
         </div>
       </div>
-      <motion.div
-        animate={{
-          background: linearGradients[activeCard % linearGradients.length],
-        }}
-        className="hidden lg:block h-60 w-80 rounded-md bg-white sticky top-10 overflow-hidden"
-      ></motion.div>
+      <Image
+        src={
+           linearGradients[activeCard % linearGradients.length]
+        }
+        // layout="fill" // This ensures the image fills the container
+  objectFit="cover"
+        quality={100}
+        alt={''}
+        width={120}
+        height={80}
+        className="hidden lg:block h-80 w-2/5 rounded-md bg-white sticky top-10 overflow-hidden"
+      ></Image>
     </motion.div></div>
   );
 };
