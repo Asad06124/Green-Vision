@@ -1,5 +1,4 @@
 import Script from "next/script"; // Import Script
-import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
@@ -17,12 +16,6 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <head>
-        <title>Leading Pakistan’s Water Revolution with Sustainable Practices</title>
-        <meta
-          name="description"
-          content="Green Vision leads Pakistan's water management revolution by promoting sustainable practices for communities and businesses through innovative solutions."
-        />
-
         {/* Google Tag Manager Script */}
         {GTM_ID && (
           <Script id="gtm-script" strategy="beforeInteractive">
@@ -35,8 +28,6 @@ export default function RootLayout({
             `}
           </Script>
         )}
-        {/* End Google Tag Manager Script */}
-
         {/* Google Analytics (gtag.js) */}
         {GA_ID && (
           <>
@@ -55,7 +46,6 @@ export default function RootLayout({
             </Script>
           </>
         )}
-        {/* End Google Analytics (gtag.js) */}
       </head>
       <body className={inter.className}>
         {/* Google Tag Manager (noscript) */}
@@ -69,8 +59,6 @@ export default function RootLayout({
             ></iframe>
           </noscript>
         )}
-        {/* End Google Tag Manager (noscript) */}
-
         <div className="relative w-full flex items-center justify-center ">
           <Navbar />
         </div>
