@@ -1,8 +1,9 @@
 import React from 'react';
-import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import courseData from '../../../data/solutions.json';
+import Image from 'next/image';
 import Footer from "@/components/Footer";
+import type { Metadata, ResolvingMetadata } from 'next';
 
 interface Solution {
   id: number;
@@ -20,18 +21,38 @@ interface Solution {
   metaDescription: string;
 }
 
-// Generate static params for dynamic routing
 export async function generateStaticParams() {
   return courseData.solutions.map((solution) => ({
     slug: solution.slug,
   }));
 }
 
-// Define the SolutionPage component
+// Define the generateMetadata function
+export async function generateMetadata(
+  { params }: { params: { slug: string } },
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const solution = courseData.solutions.find((sol) => sol.slug === params.slug);
+
+  if (!solution) {
+    return {}; // or throw an error, depending on your needs
+  }
+
+  return {
+    title: solution.metaTitle,
+    description: solution.metaDescription,
+    keywords: solution.metaTag,
+    openGraph: {
+      title: solution.metaTitle,
+      description: solution.metaDescription,
+      images: [solution.image], // Use the image for Open Graph
+    },
+  };
+}
+
 function SolutionPage({ params }: { params: { slug: string } }) {
   const solution = courseData.solutions.find((sol) => sol.slug === params.slug);
 
-  // Handle not found case
   if (!solution) {
     notFound();
   }
@@ -75,24 +96,5 @@ function SolutionPage({ params }: { params: { slug: string } }) {
     </div>
   );
 }
-
-// Get metadata for the solution
-export const metadata = (params: { slug: string }) => {
-  const solution = courseData.solutions.find((sol) => sol.slug === params.slug);
-
-  if (!solution) {
-    return {
-      title: 'Not Found',
-      description: 'This solution was not found.',
-      keywords: '',
-    };
-  }
-
-  return {
-    title: solution.metaTitle,
-    description: solution.metaDescription,
-    keywords: solution.metaTag,
-  };
-};
 
 export default SolutionPage;
