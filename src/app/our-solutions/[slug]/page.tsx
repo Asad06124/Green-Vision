@@ -75,11 +75,6 @@ function SolutionPage({ params }: { params: { slug: string } }) {
 
       <div
         className="mx-auto p-5 min-h-screen w-full bg-black/[0.96] antialiased bg-grid-white/[0.02]"
-        style={{
-          backgroundImage: solution.bgImage ? `url(${solution.bgImage})` : '',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
       >
         <article className="text-white rounded-lg">
           <header className="text-justify">
