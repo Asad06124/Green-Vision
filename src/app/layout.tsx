@@ -17,10 +17,10 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <head>
-        <title>Green Vision</title>
+        <title>Leading Pakistan’s Water Revolution with Sustainable Practices</title>
         <meta
           name="description"
-          content="Green Vision: Your Premier Solution for Drip Irrigation, Landscaping, Solar Cleaning, Filtration, Fertigation, and Sprinkler Irrigation Systems in Pakistan Welcome to Green Vision, Pakistan's leading provider of comprehensive irrigation and landscaping solutions. Our expert services include: Drip Irrigation: Maximize water efficiency and ensure precise watering for your crops with our advanced drip irrigation systems.Landscaping: Transform your outdoor spaces into stunning, sustainable landscapes with our professional landscaping services.Solar Cleaning: Maintain peak performance of your solar panels with our eco-friendly solar cleaning solutions.Filtration: Ensure clean and safe water supply for your agricultural and residential needs with our top-tier filtration systems.Fertigation: Enhance soil fertility and crop yield with our integrated fertigation systems that combine irrigation and fertilization.Sprinkler Irrigation: Achieve uniform water distribution with our state-of-the-art sprinkler irrigation systems, perfect for lawns, gardens, and agricultural fields.At Green Vision, we are committed to promoting sustainable and efficient water management practices across Pakistan. Our innovative solutions are designed to meet the unique needs of our clients, ensuring optimal growth and health for their plants and landscapes.Contact us today to discover how Green Vision can help you achieve greener and more sustainable growth with our expert irrigation and landscaping services in Pakistan."
+          content="Green Vision leads Pakistan's water management revolution by promoting sustainable practices for communities and businesses through innovative solutions."
         />
 
         {/* Google Tag Manager Script */}

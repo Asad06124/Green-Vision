@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head'; // Import Head for metadata
+import Head from 'next/head';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import courseData from '../../../data/solutions.json';
@@ -15,23 +15,11 @@ interface Solution {
   instructor: string;
   isFeatured: boolean;
   image: string;
-  bgImage?: string; // New optional field for background image
-  metaTitle: string; // New field
-  metaTag: string; // New field
-  metaDescription: string; // New field
+  bgImage?: string;
+  metaTitle: string;
+  metaTag: string;
+  metaDescription: string;
 }
-
-// Function to format descriptions with <br /> tags
-const formatDescription = (text: string) => {
-  return text
-    .split('\n')
-    .map((line, index) => (
-      <React.Fragment key={index}>
-        {line}
-        {index < text.split('\n').length - 1 && <br />}
-      </React.Fragment>
-    ));
-};
 
 export async function generateStaticParams() {
   return courseData.solutions.map((solution) => ({
@@ -39,7 +27,6 @@ export async function generateStaticParams() {
   }));
 }
 
-// Function to generate metadata
 const getMetadata = (solution: Solution) => ({
   title: solution.metaTitle,
   description: solution.metaDescription,
@@ -57,7 +44,6 @@ function SolutionPage({ params }: { params: { slug: string } }) {
 
   return (
     <>
-      {/* Use Head to define metadata */}
       <Head>
         <title>{metadata.title}</title>
         <meta name="description" content={metadata.description} />
@@ -67,7 +53,7 @@ function SolutionPage({ params }: { params: { slug: string } }) {
       <div
         className="mx-auto p-5 min-h-screen w-full bg-black/[0.96] antialiased bg-grid-white/[0.02]"
         style={{
-          backgroundImage: `url(${solution.bgImage})`, // Set background image if available
+          backgroundImage: solution.bgImage ? `url(${solution.bgImage})` : '',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
@@ -89,7 +75,7 @@ function SolutionPage({ params }: { params: { slug: string } }) {
             />
           </div>
           <div className="container sm:w-5/6 lg:w-3/5 text-center text-xl mx-auto">
-            {formatDescription(solution.description)}
+            {solution.description}
           </div>
           {solution.descriptionLong && (
             <div
