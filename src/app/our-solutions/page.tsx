@@ -20,7 +20,7 @@ function page() {
                 {course.title}
               </CardItem>
               <CardItem as="p" translateZ="60" className="text-neutral-500 text-sm max-w-sm mt-2 dark:text-neutral-300">
-                {course.description}
+                {course.description.substring(0, 160)}
               </CardItem>
               <CardItem translateZ="100" className="w-full mt-4">
                 <Image
