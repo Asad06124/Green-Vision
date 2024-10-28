@@ -17,12 +17,14 @@ function HeroSection() {
         </h1>
 
         <p className="mt-4 font-normal text-base md:text-lg text-neutral-300 max-w-lg mx-auto">
-          At <span className="text-green-500">Green Vision</span>, we aim to
-          lead Pakistan&rsquo;s water management revolution, promoting sustainable
-          practices for people, communities, and businesses. Utilizing
-          technology and creativity, we set new guidelines for public water use.
-          Our projects inspire ecological and community development, fostering a
-          sustainable future for Pakistan.
+          At <span className="text-green-500">Green Vision</span>, we specialise in 
+          innovative irrigation solutions that help create beautiful and sustainable landscapes. 
+          Our mission is to promote intelligent use of water for a &quot;clean and green Pakistan&quot;.
+          We offer high performance irrigation systems for both residential and commercial spaces. 
+          Our goal is to ensure that every drop counts, allowing you to 
+          &quot;save time, save money, save water&quot;. Explore our services, 
+          including drip irrigation, sprinkler systems, landscaping, fertigation, 
+          and solar cleaning. Let us help you transform your outdoor spaces today!.
         </p>
         <div className="mt-4">
           <Link href={"/our-solutions"}>

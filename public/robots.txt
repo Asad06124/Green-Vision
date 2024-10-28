@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://greenvisioni.com
+
+# Sitemaps
+Sitemap: https://greenvisioni.com/sitemap.xml

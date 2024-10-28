@@ -6,7 +6,6 @@ import Navbar from "@/components/Navbar";
 
 const inter = Inter({ subsets: ["latin"] });
 
-// Define your GTM and GA IDs directly
 const GTM_ID = "GTM-PFCKZCGD";
 const GA_ID = "G-H6LQKKM8Z8";
 

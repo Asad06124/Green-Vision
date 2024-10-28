@@ -1,29 +1,34 @@
 import React from 'react';
+import Head from 'next/head'; // Import Head for metadata
 import Image from 'next/image';
-
 import { notFound } from 'next/navigation';
 import courseData from '../../../data/solutions.json';
-
 import Footer from "@/components/Footer";
+
 interface Solution {
-  slug: string;
+  id: number;
   title: string;
-  description: string;
-  descriptionLong?: string; // Optional long description field
+  slug: string;
   price: number;
+  description: string;
+  descriptionLong?: string;
   instructor: string;
   isFeatured: boolean;
   image: string;
+  bgImage?: string; // New optional field for background image
+  metaTitle: string; // New field
+  metaTag: string; // New field
+  metaDescription: string; // New field
 }
 
-// Function to convert new line characters to multiple <br /> tags
+// Function to format descriptions with <br /> tags
 const formatDescription = (text: string) => {
   return text
     .split('\n')
     .map((line, index) => (
       <React.Fragment key={index}>
         {line}
-        {index < text.split('\n').length - 1 && <br />} {/* Corrected to avoid extra <br /> */}
+        {index < text.split('\n').length - 1 && <br />}
       </React.Fragment>
     ));
 };
@@ -34,32 +39,39 @@ export async function generateStaticParams() {
   }));
 }
 
-
-
-
+// Function to generate metadata
 const getMetadata = (solution: Solution) => ({
-  title: `${solution.title}`,
-  description: `${solution.description.substring(0, 160)}...`, // Ensure description is concise
+  title: solution.metaTitle,
+  description: solution.metaDescription,
+  keywords: solution.metaTag,
 });
 
-
-   function SolutionPage({ params }: { params: { slug: string } }) {
+function SolutionPage({ params }: { params: { slug: string } }) {
   const solution = courseData.solutions.find((sol) => sol.slug === params.slug);
 
   if (!solution) {
     notFound();
   }
 
-  // Define metadata based on the solution data
-  
-  const matadata = getMetadata(solution);
+  const metadata = getMetadata(solution);
+
   return (
-   
-     <html>
-        <title>{matadata.title}</title>
-        <meta name="description" content={matadata.description} />
-      
-      <div className="mx-auto p-5 min-h-screen w-full bg-black/[0.96] antialiased bg-grid-white/[0.02]">
+    <>
+      {/* Use Head to define metadata */}
+      <Head>
+        <title>{metadata.title}</title>
+        <meta name="description" content={metadata.description} />
+        <meta name="keywords" content={metadata.keywords} />
+      </Head>
+
+      <div
+        className="mx-auto p-5 min-h-screen w-full bg-black/[0.96] antialiased bg-grid-white/[0.02]"
+        style={{
+          backgroundImage: `url(${solution.bgImage})`, // Set background image if available
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
         <article className="text-white rounded-lg">
           <header className="text-justify">
             <h1 className="container sm:w-5/6 lg:w-2/5 text-3xl font-bold pt-10 text-center mx-auto">
@@ -88,8 +100,8 @@ const getMetadata = (solution: Solution) => ({
         </article>
         <Footer />
       </div>
-     
-      </html>
+    </>
   );
 }
+
 export default SolutionPage;
